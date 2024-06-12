@@ -1,0 +1,946 @@
+@prefix : <http://kdl.ge.com/AM-CDM-base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix AM-CDM-base: <http://kdl.ge.com/AM-CDM-base#> .
+@prefix sadlbasemodel: <http://sadl.org/sadlbasemodel#> .
+@prefix builtinfunctions: <http://sadl.org/builtinfunctions#> .
+@prefix sadlimplicitmodel: <http://sadl.org/sadlimplicitmodel#> .
+@base <http://kdl.ge.com/AM-CDM-base> .
+
+<http://kdl.ge.com/AM-CDM-base> rdf:type owl:Ontology ;
+                                 owl:imports <http://sadl.org/builtinfunctions> ,
+                                             <http://sadl.org/sadlbasemodel> ,
+                                             <http://sadl.org/sadlimplicitmodel> ;
+                                 rdfs:comment "This ontology was created from a SADL file 'AM-CDM-base.sadl' and should not be directly edited."@en ;
+                                 owl:versionInfo "$Revision:$ Last modified on   $Date:$" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://kdl.ge.com/AM-CDM-base#aAngle
+AM-CDM-base:aAngle rdf:type owl:ObjectProperty ;
+                   rdfs:domain AM-CDM-base:RotaryCoordinate ;
+                   rdfs:range AM-CDM-base:Measurement ;
+                   rdfs:comment "The rotation of the A angle in a rotary coordinate system."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#bAngle
+AM-CDM-base:bAngle rdf:type owl:ObjectProperty ;
+                   rdfs:domain AM-CDM-base:RotaryCoordinate ;
+                   rdfs:range AM-CDM-base:Measurement ;
+                   rdfs:comment "The rotation of the B angle in a rotary coordinate system."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#cAngle
+AM-CDM-base:cAngle rdf:type owl:ObjectProperty ;
+                   rdfs:domain AM-CDM-base:RotaryCoordinate ;
+                   rdfs:range AM-CDM-base:Measurement ;
+                   rdfs:comment "The rotation of the C angle in a rotary coordinate system."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#country
+AM-CDM-base:country rdf:type owl:ObjectProperty ;
+                    rdfs:domain AM-CDM-base:Address ;
+                    rdfs:range AM-CDM-base:Country ;
+                    rdfs:comment "Country in address."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetAccessControl
+AM-CDM-base:datasetAccessControl rdf:type owl:ObjectProperty ;
+                                 rdfs:domain AM-CDM-base:DatasetMetadata ;
+                                 rdfs:range AM-CDM-base:DatasetAccessControl ;
+                                 rdfs:comment "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetCreator
+AM-CDM-base:datasetCreator rdf:type owl:ObjectProperty ;
+                           rdfs:domain AM-CDM-base:DatasetMetadata ;
+                           rdfs:range AM-CDM-base:Person ;
+                           rdfs:comment "Creator of dataset and/or the metadata of the dataset."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetSize
+AM-CDM-base:datasetSize rdf:type owl:ObjectProperty ;
+                        rdfs:domain AM-CDM-base:DatasetMetadata ;
+                        rdfs:range AM-CDM-base:Measurement ;
+                        rdfs:comment "The size of the dataset."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#documentAuthor
+AM-CDM-base:documentAuthor rdf:type owl:ObjectProperty ;
+                           rdfs:domain AM-CDM-base:Document ;
+                           rdfs:range AM-CDM-base:Person ;
+                           rdfs:comment "One or more authors of the document."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#organizationAddress
+AM-CDM-base:organizationAddress rdf:type owl:ObjectProperty ;
+                                rdfs:domain AM-CDM-base:Organization ;
+                                rdfs:range AM-CDM-base:Address ;
+                                rdfs:comment "The address of the organization."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#organizationPhoneNumber
+AM-CDM-base:organizationPhoneNumber rdf:type owl:ObjectProperty ;
+                                    rdfs:domain AM-CDM-base:Organization ;
+                                    rdfs:range AM-CDM-base:PhoneNumber ;
+                                    rdfs:comment "A phone number for the organization."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#organizationPointOfContact
+AM-CDM-base:organizationPointOfContact rdf:type owl:ObjectProperty ;
+                                       rdfs:domain AM-CDM-base:Organization ;
+                                       rdfs:range AM-CDM-base:Person ;
+                                       rdfs:comment "Identification of the point of contact. You may wish to reference by ID to avoid possible circular references."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#organizationQualification
+AM-CDM-base:organizationQualification rdf:type owl:ObjectProperty ;
+                                      rdfs:domain AM-CDM-base:Organization ;
+                                      rdfs:range AM-CDM-base:OrganizationQualification ;
+                                      rdfs:comment "Details of the organization's qualifications and certifications."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#organizationType
+AM-CDM-base:organizationType rdf:type owl:ObjectProperty ;
+                             rdfs:domain AM-CDM-base:Organization ;
+                             rdfs:range AM-CDM-base:OrganizationType ;
+                             rdfs:comment "The type or roles of an organization, whether it is a manufacturer, vendor, supplier, or contractor. One organization may have many types."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personOrganization
+AM-CDM-base:personOrganization rdf:type owl:ObjectProperty ;
+                               rdfs:domain AM-CDM-base:Person ;
+                               rdfs:range AM-CDM-base:Organization ;
+                               rdfs:comment "Links person to an organization. You may wish to reference by ID to avoid possible circular references."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personPhoneNumber
+AM-CDM-base:personPhoneNumber rdf:type owl:ObjectProperty ;
+                              rdfs:domain AM-CDM-base:Person ;
+                              rdfs:range AM-CDM-base:PhoneNumber ;
+                              rdfs:comment "The phone number for the individual."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personQualification
+AM-CDM-base:personQualification rdf:type owl:ObjectProperty ;
+                                rdfs:domain AM-CDM-base:Person ;
+                                rdfs:range AM-CDM-base:PersonQualification ;
+                                rdfs:comment "Qualifications of person."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#phoneCountry
+AM-CDM-base:phoneCountry rdf:type owl:ObjectProperty ;
+                         rdfs:domain AM-CDM-base:PhoneNumber ;
+                         rdfs:range AM-CDM-base:Country ;
+                         rdfs:comment "Country phone number is in."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#qualifyingOrganization
+AM-CDM-base:qualifyingOrganization rdf:type owl:ObjectProperty ;
+                                   rdfs:domain AM-CDM-base:Qualification ;
+                                   rdfs:range AM-CDM-base:Organization ;
+                                   rdfs:comment "The organization from which the qualification or certification originates. You may wish to reference by ID to avoid possible circular references."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#xCoordinate
+AM-CDM-base:xCoordinate rdf:type owl:ObjectProperty ;
+                        rdfs:domain AM-CDM-base:CartesianCoordinate ;
+                        rdfs:range AM-CDM-base:Measurement ;
+                        rdfs:comment "The position on the x-axis in a Cartesian coordinate system."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#yCoordinate
+AM-CDM-base:yCoordinate rdf:type owl:ObjectProperty ;
+                        rdfs:domain AM-CDM-base:CartesianCoordinate ;
+                        rdfs:range AM-CDM-base:Measurement ;
+                        rdfs:comment "The position on the y-axis in a Cartesian coordinate system."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#zCoordinate
+AM-CDM-base:zCoordinate rdf:type owl:ObjectProperty ;
+                        rdfs:domain AM-CDM-base:CartesianCoordinate ;
+                        rdfs:range AM-CDM-base:Measurement ;
+                        rdfs:comment "The position on the z-axis in a Cartesian coordinate system."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://kdl.ge.com/AM-CDM-base#addressLine1
+AM-CDM-base:addressLine1 rdf:type owl:DatatypeProperty ;
+                         rdfs:domain AM-CDM-base:Address ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "First line in address."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#addressLine2
+AM-CDM-base:addressLine2 rdf:type owl:DatatypeProperty ;
+                         rdfs:domain AM-CDM-base:Address ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "Second line in address."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#city
+AM-CDM-base:city rdf:type owl:DatatypeProperty ;
+                 rdfs:domain AM-CDM-base:Address ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "City in address."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#countryAlpha2Code
+AM-CDM-base:countryAlpha2Code rdf:type owl:DatatypeProperty ;
+                              rdfs:domain AM-CDM-base:Country ;
+                              rdfs:range xsd:string ;
+                              rdfs:comment "Two-digit country code."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#countryAlpha3Code
+AM-CDM-base:countryAlpha3Code rdf:type owl:DatatypeProperty ;
+                              rdfs:domain AM-CDM-base:Country ;
+                              rdfs:range xsd:string ;
+                              rdfs:comment "Three-digit country code."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#countryCallingCode
+AM-CDM-base:countryCallingCode rdf:type owl:DatatypeProperty ;
+                               rdfs:domain AM-CDM-base:Country ;
+                               rdfs:range xsd:int ;
+                               rdfs:comment "The calling code for the country."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#countryName
+AM-CDM-base:countryName rdf:type owl:DatatypeProperty ;
+                        rdfs:domain AM-CDM-base:Country ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "The country's name."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#dataAggregationTechnique
+AM-CDM-base:dataAggregationTechnique rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain AM-CDM-base:Measurement ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:comment "Data aggregation technique, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetCreationDateTime
+AM-CDM-base:datasetCreationDateTime rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain AM-CDM-base:DatasetMetadata ;
+                                    rdfs:range xsd:dateTime ;
+                                    rdfs:comment "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetFormat
+AM-CDM-base:datasetFormat rdf:type owl:DatatypeProperty ;
+                          rdfs:domain AM-CDM-base:DatasetMetadata ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12 and so forth."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetID
+AM-CDM-base:datasetID rdf:type owl:DatatypeProperty ;
+                      rdfs:domain AM-CDM-base:DatasetMetadata ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Unique identifier of the dataset."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetKeyTags
+AM-CDM-base:datasetKeyTags rdf:type owl:DatatypeProperty ;
+                           rdfs:domain AM-CDM-base:DatasetMetadata ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "Keywords and tags describing the data to facilitate search and findability. Examples include 'meltpool temperature', 'meltpool size', and 'layer-wise image.'"@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetName
+AM-CDM-base:datasetName rdf:type owl:DatatypeProperty ;
+                        rdfs:domain AM-CDM-base:DatasetMetadata ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Name of the dataset."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetQuantityType
+AM-CDM-base:datasetQuantityType rdf:type owl:DatatypeProperty ;
+                                rdfs:domain AM-CDM-base:DatasetMetadata ;
+                                rdfs:range xsd:string ;
+                                rdfs:comment "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetSchemaURI
+AM-CDM-base:datasetSchemaURI rdf:type owl:DatatypeProperty ;
+                             rdfs:domain AM-CDM-base:DatasetMetadata ;
+                             rdfs:range xsd:string ;
+                             rdfs:comment "Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetSubject
+AM-CDM-base:datasetSubject rdf:type owl:DatatypeProperty ;
+                           rdfs:domain AM-CDM-base:DatasetMetadata ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "Classification, keyword, or phrase that describes the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core)."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetType
+AM-CDM-base:datasetType rdf:type owl:DatatypeProperty ;
+                        rdfs:domain AM-CDM-base:DatasetMetadata ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Dataset type, raw data or synthesized data."@en ,
+                                     "Media type, formerly known as MIME Type, a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#datasetURI
+AM-CDM-base:datasetURI rdf:type owl:DatatypeProperty ;
+                       rdfs:domain AM-CDM-base:DatasetMetadata ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "URI location where a dataset can be found."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#documentClassificationIPClass
+AM-CDM-base:documentClassificationIPClass rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain AM-CDM-base:Document ;
+                                          rdfs:range xsd:string ;
+                                          rdfs:comment "IP class classification of the document."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#documentClassificationLevel
+AM-CDM-base:documentClassificationLevel rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain AM-CDM-base:Document ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Classification level of the document."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#documentFileName
+AM-CDM-base:documentFileName rdf:type owl:DatatypeProperty ;
+                             rdfs:domain AM-CDM-base:Document ;
+                             rdfs:range xsd:string ;
+                             rdfs:comment "File name of the document."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#documentLocation
+AM-CDM-base:documentLocation rdf:type owl:DatatypeProperty ;
+                             rdfs:domain AM-CDM-base:Document ;
+                             rdfs:range xsd:string ;
+                             rdfs:comment "Physical location of the document."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#documentTitle
+AM-CDM-base:documentTitle rdf:type owl:DatatypeProperty ;
+                          rdfs:domain AM-CDM-base:Document ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "Title of the document."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#documentURI
+AM-CDM-base:documentURI rdf:type owl:DatatypeProperty ;
+                        rdfs:domain AM-CDM-base:Document ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "URI of the document pointing to its digital location."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#maxValue
+AM-CDM-base:maxValue rdf:type owl:DatatypeProperty ;
+                     rdfs:domain AM-CDM-base:Measurement ;
+                     rdfs:range xsd:double ;
+                     rdfs:comment "Maximum value of the multiple values, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#meanValue
+AM-CDM-base:meanValue rdf:type owl:DatatypeProperty ;
+                      rdfs:domain AM-CDM-base:Measurement ;
+                      rdfs:range xsd:double ;
+                      rdfs:comment "Mean (average) value of the multiple values, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#measurementUnit
+AM-CDM-base:measurementUnit rdf:type owl:DatatypeProperty ;
+                            rdfs:domain AM-CDM-base:Measurement ;
+                            rdfs:range xsd:string ;
+                            rdfs:comment "Units associated with the numerical value."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#measurementValue
+AM-CDM-base:measurementValue rdf:type owl:DatatypeProperty ;
+                             rdfs:domain AM-CDM-base:Measurement ;
+                             rdfs:range xsd:double ;
+                             rdfs:comment "Numerical value."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#medianValue
+AM-CDM-base:medianValue rdf:type owl:DatatypeProperty ;
+                        rdfs:domain AM-CDM-base:Measurement ;
+                        rdfs:range xsd:double ;
+                        rdfs:comment "Median value of the multiple values, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#minValue
+AM-CDM-base:minValue rdf:type owl:DatatypeProperty ;
+                     rdfs:domain AM-CDM-base:Measurement ;
+                     rdfs:range xsd:double ;
+                     rdfs:comment "Minimum value of the multiple values, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#modeValue
+AM-CDM-base:modeValue rdf:type owl:DatatypeProperty ;
+                      rdfs:domain AM-CDM-base:Measurement ;
+                      rdfs:range xsd:double ;
+                      rdfs:comment "Mode of the multiple values, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#numberOfValues
+AM-CDM-base:numberOfValues rdf:type owl:DatatypeProperty ;
+                           rdfs:domain AM-CDM-base:Measurement ;
+                           rdfs:range xsd:double ;
+                           rdfs:comment "Number (count) of the multiple values, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#organizationID
+AM-CDM-base:organizationID rdf:type owl:DatatypeProperty ;
+                           rdfs:domain AM-CDM-base:Organization ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "The unique identifier of the organization."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#organizationName
+AM-CDM-base:organizationName rdf:type owl:DatatypeProperty ;
+                             rdfs:domain AM-CDM-base:Organization ;
+                             rdfs:range xsd:string ;
+                             rdfs:comment "The name of an organization."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personEmail
+AM-CDM-base:personEmail rdf:type owl:DatatypeProperty ;
+                        rdfs:domain AM-CDM-base:Person ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "The email for the individual."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personFirstName
+AM-CDM-base:personFirstName rdf:type owl:DatatypeProperty ;
+                            rdfs:domain AM-CDM-base:Person ;
+                            rdfs:range xsd:string ;
+                            rdfs:comment "First name of person."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personFullName
+AM-CDM-base:personFullName rdf:type owl:DatatypeProperty ;
+                           rdfs:domain AM-CDM-base:Person ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "Full name of person if not split into first and last names."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personID
+AM-CDM-base:personID rdf:type owl:DatatypeProperty ;
+                     rdfs:domain AM-CDM-base:Person ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Unique identifier of the person."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personLastName
+AM-CDM-base:personLastName rdf:type owl:DatatypeProperty ;
+                           rdfs:domain AM-CDM-base:Person ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "Last name of person."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#personQualificationNumberOfHours
+AM-CDM-base:personQualificationNumberOfHours rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain AM-CDM-base:PersonQualification ;
+                                             rdfs:range xsd:int ;
+                                             rdfs:comment "The number of hours that this person has completed on this equipment/software/system."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#phoneNumber
+AM-CDM-base:phoneNumber rdf:type owl:DatatypeProperty ;
+                        rdfs:domain AM-CDM-base:PhoneNumber ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Actual phone number."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#postalCode
+AM-CDM-base:postalCode rdf:type owl:DatatypeProperty ;
+                       rdfs:domain AM-CDM-base:Address ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Zip or postal code in address."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#qualificationLevel
+AM-CDM-base:qualificationLevel rdf:type owl:DatatypeProperty ;
+                               rdfs:domain AM-CDM-base:Qualification ;
+                               rdfs:range xsd:string ;
+                               rdfs:comment "The level of qualification/certification."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#qualificationType
+AM-CDM-base:qualificationType rdf:type owl:DatatypeProperty ;
+                              rdfs:domain AM-CDM-base:Qualification ;
+                              rdfs:range xsd:string ;
+                              rdfs:comment "The type of qualification/certification."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#standardDeviationValue
+AM-CDM-base:standardDeviationValue rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain AM-CDM-base:Measurement ;
+                                   rdfs:range xsd:double ;
+                                   rdfs:comment "Standard deviation of the multiple values, if the numerical value was derived multiple values."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#stateProvince
+AM-CDM-base:stateProvince rdf:type owl:DatatypeProperty ;
+                          rdfs:domain AM-CDM-base:Address ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "State or Province in address."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://kdl.ge.com/AM-CDM-base#Address
+AM-CDM-base:Address rdf:type owl:Class ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:country ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass AM-CDM-base:Country
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:addressLine1 ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:addressLine2 ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:city ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:postalCode ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:stateProvince ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ;
+                    rdfs:comment "A physical address where someone or something is located."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#CartesianCoordinate
+AM-CDM-base:CartesianCoordinate rdf:type owl:Class ;
+                                rdfs:subClassOf AM-CDM-base:Coordinate ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty AM-CDM-base:xCoordinate ;
+                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                  owl:onClass AM-CDM-base:Measurement
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty AM-CDM-base:yCoordinate ;
+                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                  owl:onClass AM-CDM-base:Measurement
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty AM-CDM-base:zCoordinate ;
+                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                  owl:onClass AM-CDM-base:Measurement
+                                                ] ;
+                                rdfs:comment "A Cartesian coordinate."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Coordinate
+AM-CDM-base:Coordinate rdf:type owl:Class ;
+                       rdfs:comment "A coordinate to position an object in reference to something."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Country
+AM-CDM-base:Country rdf:type owl:Class ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:countryAlpha2Code ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:countryAlpha3Code ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:countryCallingCode ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:int
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty AM-CDM-base:countryName ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ;
+                    rdfs:comment "A country."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#DatasetAccessControl
+AM-CDM-base:DatasetAccessControl rdf:type owl:Class ;
+                                 owl:equivalentClass [ rdf:type owl:Class ;
+                                                       owl:oneOf ( AM-CDM-base:Consent
+                                                                   AM-CDM-base:Public
+                                                                   AM-CDM-base:Restricted
+                                                                 )
+                                                     ] ;
+                                 rdfs:comment "Possible types of data access control."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#DatasetMetadata
+AM-CDM-base:DatasetMetadata rdf:type owl:Class ;
+                            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetAccessControl ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass AM-CDM-base:DatasetAccessControl
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetSize ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass AM-CDM-base:Measurement
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetCreationDateTime ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onDataRange xsd:dateTime
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetID ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onDataRange xsd:string
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetName ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onDataRange xsd:string
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetSchemaURI ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onDataRange xsd:string
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetType ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onDataRange xsd:string
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty AM-CDM-base:datasetURI ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onDataRange xsd:string
+                                            ] ;
+                            rdfs:comment "Metadata associated with a dataset."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Document
+AM-CDM-base:Document rdf:type owl:Class ;
+                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                       owl:onProperty AM-CDM-base:documentClassificationIPClass ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty AM-CDM-base:documentClassificationLevel ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty AM-CDM-base:documentFileName ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty AM-CDM-base:documentLocation ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty AM-CDM-base:documentTitle ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty AM-CDM-base:documentURI ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ;
+                     rdfs:comment "File of any type."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Measurement
+AM-CDM-base:Measurement rdf:type owl:Class ;
+                        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:dataAggregationTechnique ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:maxValue ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:meanValue ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:measurementUnit ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:measurementValue ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:medianValue ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:minValue ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:modeValue ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:numberOfValues ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:standardDeviationValue ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:double
+                                        ] ;
+                        rdfs:comment "A specific data value, possibly with units. May be a single measurement, aggregate from multiple measurements, or may be a non-measured value. Label Measurement is used for all numerical values as a catch-all."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Organization
+AM-CDM-base:Organization rdf:type owl:Class ;
+                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           owl:onProperty AM-CDM-base:organizationAddress ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass AM-CDM-base:Address
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty AM-CDM-base:organizationPhoneNumber ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass AM-CDM-base:PhoneNumber
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty AM-CDM-base:organizationPointOfContact ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass AM-CDM-base:Person
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty AM-CDM-base:organizationID ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onDataRange xsd:string
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty AM-CDM-base:organizationName ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onDataRange xsd:string
+                                         ] ;
+                         rdfs:comment "An organization of various types."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#OrganizationQualification
+AM-CDM-base:OrganizationQualification rdf:type owl:Class ;
+                                      rdfs:subClassOf AM-CDM-base:Qualification ;
+                                      rdfs:comment "Details of qualification/certification for an individual or organization."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#OrganizationType
+AM-CDM-base:OrganizationType rdf:type owl:Class ;
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:oneOf ( AM-CDM-base:MachineManufacturer
+                                                               AM-CDM-base:MaterialSupplier
+                                                               AM-CDM-base:PartDesigner
+                                                               AM-CDM-base:PartManufacturer
+                                                               AM-CDM-base:PartTester
+                                                               AM-CDM-base:SystemIntegrator
+                                                               AM-CDM-base:eMaterialManufacturer
+                                                             )
+                                                 ] ;
+                             rdfs:comment "Possible types of an organization."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Orientation
+AM-CDM-base:Orientation rdf:type owl:Class ;
+                        rdfs:comment "The orientation of an object to some frame of reference."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Person
+AM-CDM-base:Person rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty AM-CDM-base:personOrganization ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass AM-CDM-base:Organization
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty AM-CDM-base:personEmail ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty AM-CDM-base:personFirstName ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty AM-CDM-base:personFullName ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty AM-CDM-base:personID ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty AM-CDM-base:personLastName ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] ;
+                   rdfs:comment "An Individual and their primary credentials and contact information."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#PersonQualification
+AM-CDM-base:PersonQualification rdf:type owl:Class ;
+                                rdfs:subClassOf AM-CDM-base:Qualification ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty AM-CDM-base:personQualificationNumberOfHours ;
+                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                  owl:onDataRange xsd:int
+                                                ] ;
+                                rdfs:comment "Details of qualification/certification for a person."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#PhoneNumber
+AM-CDM-base:PhoneNumber rdf:type owl:Class ;
+                        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:phoneCountry ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass AM-CDM-base:Country
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty AM-CDM-base:phoneNumber ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onDataRange xsd:string
+                                        ] ;
+                        rdfs:comment "A phone number."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Qualification
+AM-CDM-base:Qualification rdf:type owl:Class ;
+                          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                            owl:onProperty AM-CDM-base:qualifyingOrganization ;
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass AM-CDM-base:Organization
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty AM-CDM-base:qualificationLevel ;
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onDataRange xsd:string
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty AM-CDM-base:qualificationType ;
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onDataRange xsd:string
+                                          ] ;
+                          rdfs:comment "Details of qualification/certification (machine specific operator certificate, UL, ASTM)."@en .
+
+
+###  http://kdl.ge.com/AM-CDM-base#RotaryCoordinate
+AM-CDM-base:RotaryCoordinate rdf:type owl:Class ;
+                             rdfs:subClassOf AM-CDM-base:Coordinate ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty AM-CDM-base:aAngle ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass AM-CDM-base:Measurement
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty AM-CDM-base:bAngle ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass AM-CDM-base:Measurement
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty AM-CDM-base:cAngle ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass AM-CDM-base:Measurement
+                                             ] ;
+                             rdfs:comment "A rotary coordinate."@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://kdl.ge.com/AM-CDM-base#Consent
+AM-CDM-base:Consent rdf:type owl:NamedIndividual ,
+                             AM-CDM-base:DatasetAccessControl .
+
+
+###  http://kdl.ge.com/AM-CDM-base#MachineManufacturer
+AM-CDM-base:MachineManufacturer rdf:type owl:NamedIndividual ,
+                                         AM-CDM-base:OrganizationType .
+
+
+###  http://kdl.ge.com/AM-CDM-base#MaterialSupplier
+AM-CDM-base:MaterialSupplier rdf:type owl:NamedIndividual ,
+                                      AM-CDM-base:OrganizationType .
+
+
+###  http://kdl.ge.com/AM-CDM-base#PartDesigner
+AM-CDM-base:PartDesigner rdf:type owl:NamedIndividual ,
+                                  AM-CDM-base:OrganizationType .
+
+
+###  http://kdl.ge.com/AM-CDM-base#PartManufacturer
+AM-CDM-base:PartManufacturer rdf:type owl:NamedIndividual ,
+                                      AM-CDM-base:OrganizationType .
+
+
+###  http://kdl.ge.com/AM-CDM-base#PartTester
+AM-CDM-base:PartTester rdf:type owl:NamedIndividual ,
+                                AM-CDM-base:OrganizationType .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Public
+AM-CDM-base:Public rdf:type owl:NamedIndividual ,
+                            AM-CDM-base:DatasetAccessControl .
+
+
+###  http://kdl.ge.com/AM-CDM-base#Restricted
+AM-CDM-base:Restricted rdf:type owl:NamedIndividual ,
+                                AM-CDM-base:DatasetAccessControl .
+
+
+###  http://kdl.ge.com/AM-CDM-base#SystemIntegrator
+AM-CDM-base:SystemIntegrator rdf:type owl:NamedIndividual ,
+                                      AM-CDM-base:OrganizationType .
+
+
+###  http://kdl.ge.com/AM-CDM-base#eMaterialManufacturer
+AM-CDM-base:eMaterialManufacturer rdf:type owl:NamedIndividual ,
+                                           AM-CDM-base:OrganizationType .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
